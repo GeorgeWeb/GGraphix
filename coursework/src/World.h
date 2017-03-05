@@ -36,24 +36,28 @@ class World
 		bool update(float delta_time);
 		bool render();
 		void render_skybox();
-		void render_shadow();
 
 		// variable members
 		map<string, vec4> basic_colours;
 		map<string, mesh> meshes;
+		map<string, mesh> shadow_meshes;
 		mesh skybox;
 
 		cubemap cube_map;
 
 		effect eff;
-		effect sky_eff;
+		effect base_eff;
 		effect shadow_eff;
-		effect grey_eff;
+		effect sky_eff;
+
+		// Temporary
+		effect main_eff;
+		spot_light spot;
+		texture tex;
+		target_camera cam;
 		
 		shadow_map shadow;
 		frame_buffer frame;
-
-		vector<texture> normal_maps;
 
 		directional_light light;
 		vector<point_light> points;
@@ -62,10 +66,22 @@ class World
 		MainCamera mainCam;
 
 		array<texture, 10> texs;
+		array<texture, 10> normal_maps;
 		texture blend_map;
 
 		double cursor_x = 0;
 		double cursor_y = 0;
+		
+		float origTractorPosX = 0.0f;
+		float origTractorPosZ = 0.0f;
+		float moveSpeed = 0.3f;
+		vec3 tractorMove = vec3(0.0f, 0.0f, moveSpeed);
+
+		float elapsedTime = 0.0f;
+
+		bool gamma = true;
+
+		map<string, bool> cams;
 };
 
 #endif !WORLD_H
