@@ -1,9 +1,9 @@
-vec4 calculate_point(in point_light point, in material mat, in vec3 position, in vec3 normal, in vec3 view_dir, in vec4 tex_colour, in bool gamma) {
+vec4 calculate_point(in point_light point, in material mat, in vec3 position, in vec3 normal, in vec3 view_dir, in vec4 tex_colour) {
 // *********************************
   // Get distance between point light and vertex
   float distance = distance(point.position, position);
   // Calculate attenuation factor
-  float attenuation = 1.0f / (point.constant + point.linear * distance + point.quadratic * (gamma ? distance * distance : distance));
+  float attenuation = 1.0f / (point.constant + point.linear * distance + point.quadratic * (distance * distance));
   // Calculate light colour
   vec4 light_colour = point.light_colour * attenuation;
   // Calculate light dir

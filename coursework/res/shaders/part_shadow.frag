@@ -1,3 +1,5 @@
+const float EPSILON = 0.00001;
+
 float calculate_shadow(in sampler2D shadow_map, in vec4 light_space_pos) {
 	// Get light screen space coordinate
 	vec3 proj_coords = light_space_pos.xyz / light_space_pos.w;
@@ -19,7 +21,7 @@ float calculate_shadow(in sampler2D shadow_map, in vec4 light_space_pos) {
 	if (depth == 0.0) {
 		return 1.0;
 	}
-	else if (depth < z + 0.001) {
+	else if (depth < z + EPSILON) {
 		return 0.5;
 	}
 	else {
