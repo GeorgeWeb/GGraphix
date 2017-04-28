@@ -1,7 +1,8 @@
-#include "World.h"
+#include "World.hpp"
 
-void main(int argc, char **argv)
+void main(int, char *[])
 {
-	World world;
+	// Initialise Game World
+	SpookyTown::World world;
 	world.init();
 }
