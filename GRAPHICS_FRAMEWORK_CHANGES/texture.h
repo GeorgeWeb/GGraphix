@@ -24,8 +24,10 @@ public:
   texture(GLuint width, GLuint height) throw(...);
   // Loads a texture from the given filename
   explicit texture(const std::string &filename) throw(...);
-  // Loads a texture from the given filename with mipmaps and anisotropicfiltering determined by the user.
+  // Load an sRGB texture allowing Gamma Correction!
   texture(const std::string &filename, bool mipmaps, bool anisotropic, bool gammaCorrection) throw(...);
+  // Loads a texture from the given filename with mipmaps and anisotropicfiltering determined by the user.
+  texture(const std::string &filename, bool mipmaps, bool anisotropic) throw(...);
   // Loads a texture with mips
   texture(const std::vector<std::string> &filenames, bool anisotropic) throw(...);
   // Creates a texture from the colour data provided
